@@ -14,7 +14,7 @@ from .types import WebSocketSend
 
 
 class TTSTaskManager:
-    """Manages TTS tasks and ensures ordered delivery to frontend while allowing parallel TTS generation"""
+    """Manages TTS tasks and ensures ordered delivery to frontend."""
 
     def __init__(self) -> None:
         self.task_list: List[asyncio.Task] = []
@@ -166,10 +166,11 @@ class TTSTaskManager:
     async def _generate_audio(self, tts_engine: TTSInterface, text: str) -> str:
         """Generate audio file from text"""
         logger.debug(f"🏃Generating audio for '''{text}'''...")
-        return await tts_engine.async_generate_audio(
-            text=text,
-            file_name_no_ext=f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}",
-        )
+        async with self._lock:
+            return await tts_engine.async_generate_audio(
+                text=text,
+                file_name_no_ext=f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}",
+            )
 
     def clear(self) -> None:
         """Clear all pending tasks and reset state"""

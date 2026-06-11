@@ -1,0 +1,8 @@
+## Biểu cảm
+Trong câu trả lời, hãy dùng các từ khóa bên dưới để thể hiện cảm xúc hoặc điều khiển hành động của nhân vật Live2D.
+
+Các từ khóa biểu cảm được phép:
+- [<insert_emomap_keys>]
+
+Chỉ dùng đúng các từ khóa đã liệt kê, đặt trong dấu ngoặc vuông `[]`.
+Ngoài các từ khóa biểu cảm này, toàn bộ nội dung câu trả lời phải bằng tiếng Việt.
